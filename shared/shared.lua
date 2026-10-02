@@ -1,5 +1,49 @@
 Config = {}
 
+Config.DevMode = true
+
+Config.VehicleCheck = {
+  enabled = true,
+  framework = "auto", -- auto, ox, esx, qb
+  key = "G",
+  displayTime = 8000,
+  showPlate = true,
+  showOwner = true,
+  showModel = true,
+  database = {
+    ox = {
+      vehicleTable = "vehicles",
+      plateColumn = "plate",
+      ownerColumn = "owner",
+      modelColumn = "model",
+      ownerTable = "characters",
+      ownerIdColumn = "charId",
+      firstNameColumn = "firstName",
+      lastNameColumn = "lastName"
+    },
+    esx = {
+      vehicleTable = "owned_vehicles",
+      plateColumn = "plate",
+      ownerColumn = "owner",
+      modelColumn = "vehicle",
+      ownerTable = "users",
+      ownerIdColumn = "identifier",
+      firstNameColumn = "firstname",
+      lastNameColumn = "lastname"
+    },
+    qb = {
+      vehicleTable = "player_vehicles",
+      plateColumn = "plate",
+      ownerColumn = "citizenid",
+      modelColumn = "vehicle",
+      ownerTable = "players",
+      ownerIdColumn = "citizenid",
+      firstNameColumn = "charinfo",
+      lastNameColumn = "charinfo"
+    }
+  }
+}
+
 Config.Cams = {
   -- ============================================================
   -- Helikopter
@@ -9,6 +53,8 @@ Config.Cams = {
     nightVision = true,
     thermalVision = true,
     normal = true,
+    -- spotlight = true,
+    vehicleCheck = true,
 
     relativeCoords = vector4(
       0.0,  -- -links / +rechts

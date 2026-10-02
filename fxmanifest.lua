@@ -15,5 +15,12 @@ client_scripts {
 }
 
 server_scripts {
-	'server/*.lua'
+  '@oxmysql/lib/MySQL.lua',
+  'server/*.lua'
+}
+
+dependencies {
+	'ox_core',
+	'ox_lib',
+	'oxmysql',
 }
