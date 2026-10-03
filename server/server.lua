@@ -1,3 +1,4 @@
+
 -- ============================================================
 -- FRAMEWORK
 -- ============================================================
@@ -7,18 +8,21 @@ local function DetectFramework()
   if Config.VehicleCheck.framework and Config.VehicleCheck.framework ~= "auto" then
     return Config.VehicleCheck.framework
   end
+
   if GetResourceState("ox_core") == "started" then
     return "ox"
   end
+
   if GetResourceState("es_extended") == "started" then
     return "esx"
   end
+
   if GetResourceState("qb-core") == "started" then
     return "qb"
   end
+
   return "standalone"
 end
-
 local function IsSafeIdentifier(value)
   return type(value) == "string" and value:match("^[%w_]+$") ~= nil
 end

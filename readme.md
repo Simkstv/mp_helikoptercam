@@ -31,6 +31,10 @@ Das Script stellt eine Kamerafunktion für definierte Helikopter bereit und eign
 
 1. Resource in den `resources`-Ordner des FiveM-Servers kopieren.
 
+## Dependencies
+- [OxMySQL](https://github.com/overextended/oxmysql)
+- Framework OxCore, ESX oder QB für die Fahrzeugauslese bennötigt.
+
 Beispiel:
 
 ```text
