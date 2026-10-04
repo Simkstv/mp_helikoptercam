@@ -748,12 +748,16 @@ RegisterCommand("helicam", function()
   end
   local vehicle = GetVehiclePedIsIn(ped, false)
   if vehicle == 0 then
-    print("^1[SBR HELICAM]^7 Du sitzt in keinem Fahrzeug.")
+    if Config.DevMode then
+      print("^1[SBR HELICAM]^7 Du sitzt in keinem Fahrzeug.")
+    end
     return
   end
   local config = GetHelicopterConfig(vehicle)
   if not config then
-    print("^1[SBR HELICAM]^7 Dieses Fahrzeug besitzt keine Kamera.")
+    if Config.DevMode then
+      print("^1[SBR HELICAM]^7 Dieses Fahrzeug besitzt keine Kamera.")
+    end
     return
   end
   OpenHelicopterCamera(
