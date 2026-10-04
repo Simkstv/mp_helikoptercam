@@ -154,30 +154,57 @@ local function GetZoomValue()
   local safeFov = math.max(currentFov, 0.1)
   return activeConfig.max_fov / safeFov
 end
+local function GetCameraHint()
+  if not activeConfig then
+    return nil
+  end
+  local hints = {}
+  if activeConfig.nightVision == true or activeConfig.thermalVision == true then
+    hints[#hints + 1] = "[ N ] Modus ändern"
+  end
+  if activeConfig.lockOn ~= false then
+    hints[#hints + 1] = "[ L ] Target Lock"
+  end
+  if activeConfig.vehicleCheck == true and Config.VehicleCheck and Config.VehicleCheck.enabled == true then
+    hints[#hints + 1] = "[ G ] Fahrzeuginfo"
+  end
+  if #hints == 0 then
+    return nil
+  end
+  return table.concat(hints, "   ")
+end
 local function DrawCameraHUD()
   if not cameraActive or not activeVehicle then
     return
   end
+  
   -- --------------------------------------------------------
   -- BEDIENHINWEIS UNTEN MITTIG
   -- --------------------------------------------------------
-  DrawRect(
-    0.5,
-    0.925,
-    0.315,
-    0.035,
-    0,
-    0,
-    0,
-    140
-  )
-  DrawHudText(
-    0.5,
-    0.914,
-    "[ N ]  Modus ändern [ L ] Target Lock [ G ] Fahrzeuginfo",
-    0.32,
-    true
-  )
+  local cameraHint = GetCameraHint()
+  if cameraHint then
+    local hintWidth = math.min(
+      0.60,
+      math.max(0.12, 0.05 + (#cameraHint * 0.0045))
+    )
+    DrawRect(
+      0.5,
+      0.925,
+      hintWidth,
+      0.035,
+      0,
+      0,
+      0,
+      140
+    )
+    DrawHudText(
+      0.5,
+      0.914,
+      cameraHint,
+      0.32,
+      true
+    )
+  end
   -- --------------------------------------------------------
   -- schwarze leichte Balken
   -- --------------------------------------------------------
