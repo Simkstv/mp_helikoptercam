@@ -14,6 +14,7 @@ Das Script stellt eine Kamerafunktion für definierte Helikopter bereit und eign
 - Normaler Kameramodus
 - Night Vision
 - Thermal Vision
+- VehicleLock Verfolge Fahrzeug automatisch mit der Kamera.
 - Kamera-HUD
 - Anzeige von:
   - Sichtmodus
